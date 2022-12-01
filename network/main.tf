@@ -79,7 +79,7 @@ resource "aws_vpc_peering_connection" "market" {
   tags_all = {
     Name = "cirk-${var.environment}-to-ckmarketing"
   }
-  vpc_id = module.vpc.vpc_id
+  vpc_id = "vpc-0023d84f28b9af514"
 
   depends_on = [module.vpc]
 }

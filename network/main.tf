@@ -66,8 +66,6 @@ resource "aws_vpc_peering_connection" "market" {
   #peer_region   = "us-east-1"
   peer_vpc_id   = "vpc-2b11f152"
   auto_accept   = true
-  provider= aws.market
-
   requester {
     #allow_classic_link_to_remote_vpc = "false"
     allow_remote_vpc_dns_resolution  = "false"
@@ -84,5 +82,15 @@ resource "aws_vpc_peering_connection" "market" {
   vpc_id = module.vpc.vpc_id
 
   depends_on = [module.vpc]
+}
+
+resource "aws_vpc_peering_connection_accepter" "market" {
+  provider                  = aws.market
+  vpc_peering_connection_id = aws_vpc_peering_connection.market.id
+  auto_accept               = true
+
+  tags = {
+    Side = "Accepter"
+  }
 }
 

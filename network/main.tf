@@ -85,7 +85,7 @@ resource "aws_vpc_peering_connection" "market" {
 }
 */resource "aws_vpc_peering_connection" "market" {
   peer_owner_id = "713044078609"
-  peer_region   = "us-east-1"
+  #peer_region   = "us-east-1"
   peer_vpc_id   = "vpc-2b11f152"
 
   requester {
@@ -103,10 +103,10 @@ resource "aws_vpc_peering_connection" "market" {
   }
 
   vpc_id = module.vpc.vpc_id
-
+  #auto_accept = true
 }
 
-resource "aws_vpc_peering_connection_accepter" "market" {
+/*resource "aws_vpc_peering_connection_accepter" "market" {
   provider                  = aws.market
   vpc_peering_connection_id = aws_vpc_peering_connection.market.id
   auto_accept               = true
@@ -114,4 +114,4 @@ resource "aws_vpc_peering_connection_accepter" "market" {
   tags = {
     Side = "Accepter"
   }
-}
+}*/

@@ -103,4 +103,5 @@ resource "aws_vpc_peering_connection" "market" {
   }
 
   vpc_id = module.vpc.vpc_id
+  auto_accept = true
 }

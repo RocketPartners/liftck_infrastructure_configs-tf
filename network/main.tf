@@ -60,7 +60,7 @@ module "vpc" {
   dhcp_options_domain_name         = "ec2.internal"
 
 }
-
+/*
 resource "aws_vpc_peering_connection" "market" {
   peer_owner_id = "713044078609"
   #peer_region   = "us-east-1"
@@ -83,15 +83,24 @@ resource "aws_vpc_peering_connection" "market" {
 
   depends_on = [module.vpc]
 }
-/*
-resource "aws_vpc_peering_connection_accepter" "market" {
-  provider                  = aws.market
-  vpc_peering_connection_id = aws_vpc_peering_connection.market.id
-  auto_accept               = true
+*/resource "aws_vpc_peering_connection" "market" {
+  peer_owner_id = "713044078609"
+  peer_region   = "us-east-1"
+  peer_vpc_id   = "vpc-2b11f152"
+
+  requester {
+    #allow_classic_link_to_remote_vpc = "false"
+    allow_remote_vpc_dns_resolution  = "false"
+    #allow_vpc_to_remote_classic_link = "false"
+  }
 
   tags = {
-    Side = "Accepter"
+    Name = "circlek-${var.environment}-to-ckmarketing"
   }
+
+  tags_all = {
+    Name = "circlek-${var.environment}-to-ckmarketing"
+  }
+
+  vpc_id = module.vpc.vpc_id
 }
-*/
-N

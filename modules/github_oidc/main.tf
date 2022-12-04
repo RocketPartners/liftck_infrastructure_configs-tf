@@ -28,7 +28,7 @@ resource "aws_iam_openid_connect_provider" "github" {
 }
 
 resource "aws_iam_role" "github_actions" {
-  name               = "github-actions"
+  name               = var.name
   assume_role_policy = data.aws_iam_policy_document.github_actions_assume_role.json
 }
 

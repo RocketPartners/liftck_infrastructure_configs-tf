@@ -116,7 +116,7 @@ resource "aws_vpc_peering_connection" "market" {
   }
 }*/
 
-module "github_oidc" {
-  source = "../modules/github_oidc/"
-  name = "cirk-${var.environment}-github-actions"
-}
+# module "github_oidc" {
+#   source = "../modules/github_oidc/"
+#   name = "cirk-${var.environment}-github-actions"
+# }

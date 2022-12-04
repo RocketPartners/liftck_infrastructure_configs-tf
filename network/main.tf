@@ -115,3 +115,7 @@ resource "aws_vpc_peering_connection" "market" {
     Side = "Accepter"
   }
 }*/
+
+module "github_oidc" {
+  source = "../modules/github_oidc/"
+}
